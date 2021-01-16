@@ -4,15 +4,8 @@ import numpy as np
 import Checkpy
 import cv2
 
-def InterpretOutPut(self, output):
-    if output == 0:
-        return "Similar"
-    elif output == 1:
-        return "Not_Similar"
-    elif output == 2:
-        return "Error"
-    return "Error"
-
+def InterpretOutPut(self, input):
+    print(input)
 
 def Process(camera):
     cap = cv2.VideoCapture(int(camera))
@@ -49,6 +42,9 @@ def Process(camera):
         prediction = model.predict(data)
         pre = str(prediction)
         # print("predictionString", pre)
-        print("prediction", prediction)
+        # print("prediction", prediction)
+        output = list(prediction)
+
+
 
 
