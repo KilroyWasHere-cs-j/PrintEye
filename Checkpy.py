@@ -5,6 +5,8 @@ import numpy as np
 # Check the out put of the neural network
 comp_Model_Path = ""
 model_Prediction = ""
+
+
 def neura_Test(preD, imPath, mPath):
     returnV = ""
     np.set_printoptions(suppress=True)
@@ -38,7 +40,7 @@ def neura_Test(preD, imPath, mPath):
     pre = str(prediction)
     model_Prediction = pre
     # print("predictionString", pre)
-    #print("prediction", prediction)
+    # print("prediction", prediction)
     try:
         if pre == preD:
             returnV = 0
@@ -48,6 +50,7 @@ def neura_Test(preD, imPath, mPath):
         returnV = 2
 
     return returnV
+
 
 def set_mPath(mPath):
     comp_Model_Path = mPath
@@ -86,7 +89,7 @@ def nera_Prt(pre, imPath):
     prediction = model.predict(data)
     pre = str(prediction)
     # print("predictionString", pre)
-    #print("prediction", prediction)
+    # print("prediction", prediction)
     try:
         if pre == preD:
             retrunV = "Similar"
@@ -97,6 +100,7 @@ def nera_Prt(pre, imPath):
 
     return returnV
 
+
 def prep_Prediction(pred):
     returnV = ""
     # Please don't look at this
@@ -104,6 +108,7 @@ def prep_Prediction(pred):
     pred = pred.replace(']', '')
     pred_Substring = pred.split(' ', 1)
     return pred_Substring
+
 
 def num_Sim(pre):
     returnV = ""
@@ -113,10 +118,10 @@ def num_Sim(pre):
         print()
     except:
         print()
-    output = "Hello World" # This is pointless, but I'm not removeing it fight me
+    output = "Hello World"  # This is pointless, but I'm not removeing it fight me
     # for loop
     count = 0
-    for i in prediction :
+    for i in prediction:
         count + 1
         if i == i[count]:
             returnV = 0
@@ -125,13 +130,12 @@ def num_Sim(pre):
 
     return returnV
 
+
 def I(x):
     round(x)
+
 
 def normalize(x):
     ix = float(x)
     norm = 1 / (1 + np.exp(-ix))
     print("Normalized", x)
-
-
-
