@@ -3,6 +3,7 @@ import UI
 import FileHandlers as FH
 import Messager as M
 
+#Hello Emma!!
 UI.Beep()
 print("Camera started")
 if UI.Query_Config("email - ") is None:
