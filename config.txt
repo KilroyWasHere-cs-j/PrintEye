@@ -1,0 +1,5 @@
+# Don't make changes to this file unless you know what you are doing mistakes can cause massive problems
+modelPath - Prints.h5
+camera - 0
+showP - True
+email - gmtower1@gmail.com

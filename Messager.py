@@ -1,8 +1,21 @@
 import smtplib
+import UI
 
 
 def Send_Email(receiver, message):
     server = smtplib.SMTP_SSL("smtp.gmail.com", 465)
-    server.login("emmanoaa945@gmail.com", "ThisIsEmma")
-    server.sendmail("emmanoaa945@gmail.com", receiver, message)
+    server.login("printeye2021@gmail.com", "PrintEyeAdmin")  # Need to find a way to make this secretive
+    server.sendmail("printeye2021@gmail.com", receiver, message)
     server.quit()
+
+
+def Send_SMS(receiver, message):
+    print("Not working")
+    # this may never be used
+
+
+def Hello():
+    server = smtplib.SMTP_SSL("smtp.gmail.com", 465)
+    server.login("printeye2021@gmail.com", "PrintEyeAdmin")
+    server.sendmail("printeye2021@gmail.com", UI.Query_Config("email - "), "Hello Welcome to print eye")
+    print("Sent")
