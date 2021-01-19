@@ -3,18 +3,38 @@ from PIL import Image, ImageOps
 import numpy as np
 import cv2
 import time
+import Messager as M
+import time as t
+import Math
 import UI
 
 
-def InterpretOutPut(input):
-    print(input)
+def interpret_output(pre):
+    # This function is very much a sin, but I'm not changing it programing 101
+    hold = pre.split(' ')
+    hold = str(hold)
+    hold.replace('[', '')
+    hold.replace(']', '')
+    items = hold.split()
+    #for item in list1:
+    #    print(item)
+    foo = items[0].replace('[[', '')
+    try:
+        if foo > items[3]:
+            print("\u001b[32mSuccess")
+        else:
+            print("\u001b[32mSuccess")
+    except:
+        print("\u001b[32mFailure")
+        UI.Print_Failure()
 
 
 def Process(camera):
-    t0 = time.time()
+    t0 = t.time()
     cap = cv2.VideoCapture(camera)
     while True:
-        ret, frame = cap.read()
+        #ret, frame = cap.read()
+        frame = cv2.imread("download.jpg")
         np.set_printoptions(suppress=True)
         # Load the model
         model = tensorflow.keras.models.load_model('Prints.h5')
@@ -39,10 +59,13 @@ def Process(camera):
         prediction = model.predict(data)
         pre = str(prediction)
         # print("predictionString", pre)
-        t1 = time.time()
-        if UI.Query_Config("showP - ") == "True": # Doesn't work
+        t1 = t.time()
+        print("\u001b[32mPrediction", prediction)
+        print("\u001b[34mTime:", t1 - t0)
+        if UI.Query_Config("showP - ") == "True":  # Doesn't work
             print("\u001b[32mPrediction", prediction)
+
             print("\u001b[34mTime:", t1 - t0)
         else:
             print("")
-        output = list(prediction)
+        interpret_output(pre=pre)
