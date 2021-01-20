@@ -8,6 +8,7 @@ def Send_Email(message):
     server.login("printeye2021@gmail.com", "PrintEyeAdmin")  # Need to find a way to make this secretive
     server.sendmail("printeye2021@gmail.com", receiver, message)
     server.quit()
+    print("Message Sent")
 
 
 def Send_SMS(receiver, message):

@@ -2,15 +2,14 @@ import tensorflow.keras
 from PIL import Image, ImageOps
 import numpy as np
 import cv2
-import time
-import Messager as M
 import time as t
 import Math
 import UI
 
 
 def interpret_output(pre):
-    # This function is very much a sin, but I'm not changing it programing 101
+    # This function is very much a sin, but I'm not changing it. Programing 101
+    # This hardly works
     hold = pre.split(' ')
     hold = str(hold)
     hold.replace('[', '')
@@ -18,23 +17,26 @@ def interpret_output(pre):
     items = hold.split()
     #for item in list1:
     #    print(item)
-    foo = items[0].replace('[[', '')
-    try:
-        if foo > items[3]:
-            print("\u001b[32mSuccess")
-        else:
-            print("\u001b[32mSuccess")
-    except:
-        print("\u001b[32mFailure")
-        UI.Print_Failure()
+    one = items[0].replace('[[', '').replace('[', '')
+    two = items[1].replace('[[', '')
+    if one > two:
+        print("One: ", one, two)
+        print("Success")
+    elif two > one:
+        print("Two: ", two)
+        print("Failure")
+    else:
+        print("Error")
+
 
 
 def Process(camera):
     t0 = t.time()
     cap = cv2.VideoCapture(camera)
+    holdover = cv2.imread("Success.jpg")
     while True:
-        #ret, frame = cap.read()
-        frame = cv2.imread("download.jpg")
+        ret, frame = cap.read()
+        #frame = cv2.imread("")
         np.set_printoptions(suppress=True)
         # Load the model
         model = tensorflow.keras.models.load_model('Prints.h5')
@@ -42,6 +44,10 @@ def Process(camera):
         # The 'length' or number of images you can put into the array is
         # determined by the first position in the shape tuple, in this case 1.
         data = np.ndarray(shape=(1, 224, 224, 3), dtype=np.float32)
+        Math.MSE(frame, holdover)
+        cv2.imwrite("Holdover.jpg", holdover)
+        #cv2.imread("Frame.jpg", frame)
+        holdover = frame
         # Replace this with the path to your image
         image = Image.fromarray(frame, 'RGB')
         # image = Image.open('Man.jpg')
