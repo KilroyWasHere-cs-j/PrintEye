@@ -1,8 +1,8 @@
 # Handles file reading and writing
 
-configPath = 'config.txt'
-logPath = 'Log.txt'
-metricPath = 'Metric.txt'
+configPath = 'C:\\Users\gmtow\\PycharmProjects\\PrintChecker\\config.txt'
+logPath = 'C:\\Users\\gmtow\\PycharmProjects\\PrintChecker\\Log.txt'
+metricPath = 'C:\\Users\\gmtow\\PycharmProjects\\PrintChecker\\Metric.txt'
 
 
 def Update_Log(message):
@@ -28,14 +28,17 @@ def Update_Metrics(metric):
 
 
 def Update_Config(update):
-    CFile = open(configPath, 'r')
-    fileContext = CFile.read()
-    CFile.close()
-    CFile2 = open(configPath, 'w')
-    CFile2.write(fileContext)
-    CFile2.write("\n")
-    CFile2.write(update)
-    CFile.close()
+    try:
+        CFile = open(configPath, 'r')
+        fileContext = CFile.read()
+        CFile.close()
+        CFile2 = open(configPath, 'w')
+        CFile2.write(fileContext)
+        CFile2.write("\n")
+        CFile2.write(update)
+        CFile.close()
+    except:
+        print("Can't update config")
 
 
 def Open_Metrics():

@@ -17,16 +17,19 @@ def Suppress():
 
 
 def Query_Config(header):
-    f = open('config.txt', 'r')
+    try:
+        f = open('C:\\Users\\gmtow\\PycharmProjects\\PrintChecker\\config.txt', 'r')
 
-    while True:
-        line = f.readline()
-        if not line:
-            break
+        while True:
+            line = f.readline()
+            if not line:
+                break
 
-        if header in line:
-            line = line.replace(header, '')  # Not clean but it works leave me alone
-            return line
+            if header in line:
+                line = line.replace(header, '')  # Not clean but it works leave me alone
+                return line
+    except:
+        print("No email")
 
 
 def Beep():
@@ -72,3 +75,5 @@ def Print_Failure():
 
 def Build_UI():
     print("UI built")
+
+
