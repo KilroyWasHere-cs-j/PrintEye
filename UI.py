@@ -1,4 +1,3 @@
-import warnings
 import winsound
 import FileHandlers as FH
 import pyttsx3
@@ -6,19 +5,14 @@ import OID
 from datetime import *
 import Messager as M
 import sys
-
-
-def fxn():
-    warnings.warn("deprecated", DeprecationWarning)
-
-
-def Suppress():
-    warnings.filterwarnings("ignore")
+import os
 
 
 def Query_Config(header):
     try:
-        f = open('C:\\Users\\gmtow\\PycharmProjects\\PrintChecker\\config.txt', 'r')
+        cPath = GDN()
+        path = 'config.txt'
+        f = open(path, 'r')
 
         while True:
             line = f.readline()
@@ -46,13 +40,6 @@ def Beep_Custom(duration, times):
         winsound.Beep(frequency, duration)
 
 
-
-def Warning():
-    frequency = 2500
-    duration = 1000
-    winsound.Beep(frequency, duration)
-
-
 def Speak(mes):
     engine = pyttsx3.init()
     engine.say(mes)
@@ -74,6 +61,10 @@ def Print_Failure():
 
 
 def Build_UI():
+    # This is pointless
     print("UI built")
 
+
+def GDN():
+    return os.getcwd()
 

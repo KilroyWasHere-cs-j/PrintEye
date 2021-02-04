@@ -1,8 +1,9 @@
 # Handles file reading and writing
+import UI
 
-configPath = 'C:\\Users\gmtow\\PycharmProjects\\PrintChecker\\config.txt'
-logPath = 'C:\\Users\\gmtow\\PycharmProjects\\PrintChecker\\Log.txt'
-metricPath = 'C:\\Users\\gmtow\\PycharmProjects\\PrintChecker\\Metric.txt'
+configPath = 'config.txt'
+logPath = 'Log.txt'
+metricPath = 'Metric.txt'
 
 
 def Update_Log(message):
@@ -46,4 +47,3 @@ def Open_Metrics():
     fileContext = MFile.read()
     MFile.close()
     return fileContext
-

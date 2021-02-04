@@ -15,7 +15,7 @@ def interpret_output(pre):
     hold.replace('[', '')
     hold.replace(']', '')
     items = hold.split()
-    #for item in list1:
+    # for item in list1:
     #    print(item)
     one = items[0].replace('[[', '').replace('[', '')
     two = items[1].replace('[[', '')
@@ -25,31 +25,31 @@ def interpret_output(pre):
     elif two > one:
         print("Two: ", two)
         print("Failure")
+        UI.Print_Failure()
     else:
         print("Error")
-
 
 
 def Process(camera):
     t0 = t.time()
     cap = cv2.VideoCapture(camera)
-    holdover = cv2.imread("C:\\Users\\gmtow\\PycharmProjects\\PrintChecker\\Success.jpg")
+    holdover = cv2.imread("Success.jpg")
     while True:
         ret, frame = cap.read()
-        #frame = cv2.imread("")
+        # frame = cv2.imread("")
         np.set_printoptions(suppress=True)
         # Load the model
-        model = tensorflow.keras.models.load_model('C:\\Users\\gmtow\\PycharmProjects\\PrintChecker\\Prints.h5')
+        model = tensorflow.keras.models.load_model('Prints.h5')
         # Create the array of the right shape to feed into the keras model
         # The 'length' or number of images you can put into the array is
         # determined by the first position in the shape tuple, in this case 1.
         data = np.ndarray(shape=(1, 224, 224, 3), dtype=np.float32)
-        Math.MSE(frame, holdover)
-        cv2.imwrite("C:\\Users\\gmtow\\PycharmProjects\\PrintChecker\\Holdover.jpg", holdover)
-        #cv2.imread("Frame.jpg", frame)
+        #Math.MSE(frame, holdover)
+        # cv2.imread("Frame.jpg", frame)
         holdover = frame
         # Replace this with the path to your image
         image = Image.fromarray(frame, 'RGB')
+        cv2.imwrite("Holdover.jpg", holdover)
         # image = Image.open('Man.jpg')
         # resize the image to a 224x224 with the same strategy as in TM2:
         # resizing the image to be at least 224x224 and then cropping from the center
@@ -75,3 +75,5 @@ def Process(camera):
         else:
             print("")
         interpret_output(pre=pre)
+
+

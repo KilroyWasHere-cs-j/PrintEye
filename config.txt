@@ -2,4 +2,8 @@
 modelPath - Prints.h5
 camera - 0
 showP - True
-email - gmtower1@gmail.com
+
+
+localDir - C:\Users\gmtow\PycharmProjects\PrintChecker
+email - gmtower1@gmail
+localDir - C:\Users\gmtow\source\repos\PrintEye\PrintEye\bin\Debug
